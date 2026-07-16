@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "whatsapp-transport-bot",
+  "name": "nahaka",
   "main": "src/index.js",
   "compatibility_date": "2026-07-16",
   "observability": {
@@ -21,7 +21,8 @@
   },
   "kv_namespaces": [
     {
-      "binding": "SESSIONS"
+      "binding": "SESSIONS",
+      "id": "06fc0eb489d94ca38f46356341c0aeec"
     }
   ]
 }
