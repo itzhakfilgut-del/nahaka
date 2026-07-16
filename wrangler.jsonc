@@ -1,0 +1,27 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "whatsapp-transport-bot",
+  "main": "src/index.js",
+  "compatibility_date": "2026-07-16",
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "VERIFY_TOKEN": "CHANGE_ME_TO_RANDOM_TEXT",
+    "GRAPH_API_VERSION": "v23.0",
+    "SHEET_ID": "19PXKI4aqSLRgGjWjbY7Ue0NZfme5F21Dn7wJZZH4eqA",
+    "SHEET_GID": "0",
+    "WELCOME_IMAGE_URL": "",
+    "REGISTRATION_OWNER_PHONE": "",
+    "MORE_DETAILS_MESSAGE": "פרטים נוספים יפורסמו כאן בקרוב.",
+    "SESSION_TTL_SECONDS": "86400"
+  },
+  "secrets": {
+    "required": ["WHATSAPP_TOKEN", "PHONE_NUMBER_ID"]
+  },
+  "kv_namespaces": [
+    {
+      "binding": "SESSIONS"
+    }
+  ]
+}
