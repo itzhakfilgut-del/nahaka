@@ -63,11 +63,13 @@ function extractInput(messageData) {
     messageData?.textMessageData?.textMessage ||
     messageData?.extendedTextMessageData?.text ||
 
-    // לחיצה על הכפתורים שלך
+    // הכפתורים שנשלחים אצלך
+    messageData?.interactiveButtonsResponse?.selectedId ||
+    messageData?.interactiveButtonsResponse?.selectedDisplayText ||
+
+    // פורמטים נוספים של GREEN-API
     messageData?.templateButtonReplyMessage?.selectedId ||
     messageData?.templateButtonReplyMessage?.selectedDisplayText ||
-
-    // תמיכה גם בסוגי כפתורים אחרים
     messageData?.buttonsResponseMessage?.selectedButtonId ||
     messageData?.buttonsResponseMessage?.selectedButtonText ||
     "";
