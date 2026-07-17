@@ -156,7 +156,7 @@ export function sendImage(to, imageUrl, caption, env) {
  */
 export function sendMainMenu(to, env) {
   return send(
-    "sendInteractiveButtons",
+    ""sendInteractiveButtonsReply",",
     {
       chatId: toChatId(to),
       header: "צעדת האלפים לעזה",
@@ -164,17 +164,14 @@ export function sendMainMenu(to, env) {
       footer: "בחרו אחת מהאפשרויות",
       buttons: [
         {
-          type: "reply",
           buttonId: "main_register",
           buttonText: "להירשם להסעה"
         },
         {
-          type: "reply",
           buttonId: "main_open",
           buttonText: "לפתוח רישום"
         },
         {
-          type: "reply",
           buttonId: "main_details",
           buttonText: "פרטים נוספים"
         }
