@@ -21,9 +21,10 @@ export default {
         console.error("Invalid webhook JSON", error);
         return new Response("Invalid JSON", { status: 400 });
       }
-
+      
       console.log("GREEN-API webhook:", JSON.stringify(body));
-
+      console.log("MESSAGE DATA:");
+      console.log(JSON.stringify(body.messageData, null, 2));
       // מטפלים רק בהודעות נכנסות
       if (body?.typeWebhook !== "incomingMessageReceived") {
         return new Response("OK", { status: 200 });
