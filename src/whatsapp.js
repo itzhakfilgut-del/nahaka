@@ -155,19 +155,33 @@ export function sendImage(to, imageUrl, caption, env) {
  * ב-GREEN-API נשלח תפריט ממוספר כהודעת טקסט.
  */
 export function sendMainMenu(to, env) {
-  const message = [
-    "שלום וברוכים הבאים 🚍",
-    "",
-    "מה תרצו לעשות?",
-    "",
-    "1. להירשם להסעה",
-    "2. לפתוח רישום",
-    "3. פרטים נוספים",
-    "",
-    "השיבו עם מספר האפשרות הרצויה."
-  ].join("\n");
-
-  return sendText(to, message, env);
+  return send(
+    "sendInteractiveButtons",
+    {
+      chatId: toChatId(to),
+      header: "צעדת האלפים לעזה",
+      body: "שלום וברוכים הבאים 🇮🇱\nמה תרצו לעשות?",
+      footer: "בחרו אחת מהאפשרויות",
+      buttons: [
+        {
+          type: "reply",
+          buttonId: "main_register",
+          buttonText: "להירשם להסעה"
+        },
+        {
+          type: "reply",
+          buttonId: "main_open",
+          buttonText: "לפתוח רישום"
+        },
+        {
+          type: "reply",
+          buttonId: "main_details",
+          buttonText: "פרטים נוספים"
+        }
+      ]
+    },
+    env
+  );
 }
 
 /**
