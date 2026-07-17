@@ -156,7 +156,7 @@ export function sendImage(to, imageUrl, caption, env) {
  */
 export function sendMainMenu(to, env) {
   return send(
-    ""sendInteractiveButtonsReply",",
+    "sendInteractiveButtonsReply",
     {
       chatId: toChatId(to),
       header: "צעדת האלפים לעזה",
