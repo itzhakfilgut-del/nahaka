@@ -59,39 +59,17 @@ export default {
 function extractInput(messageData) {
   if (!messageData) return "";
 
-  const type = messageData.typeMessage;
-
-  if (type === "textMessage") {
-    return messageData.textMessageData?.textMessage || "";
-  }
-
-  if (type === "extendedTextMessage") {
-    return messageData.extendedTextMessageData?.text || "";
-  }
-
-  if (type === "buttonsResponseMessage") {
-    return (
-      messageData.buttonsResponseMessage?.selectedButtonId ||
-      messageData.buttonsResponseMessage?.selectedButtonText ||
-      ""
-    );
-  }
-
-  if (type === "templateButtonsReplyMessage") {
-    return (
-      messageData.templateButtonReplyMessage?.selectedId ||
-      messageData.templateButtonReplyMessage?.selectedDisplayText ||
-      ""
-    );
-  }
-
-  if (type === "listResponseMessage") {
-    return (
-      messageData.listResponseMessage?.singleSelectReply ||
-      messageData.listResponseMessage?.title ||
-      ""
-    );
-  }
-
-  return "";
+  return (
+    messageData?.textMessageData?.textMessage ||
+    messageData?.extendedTextMessageData?.text ||
+    messageData?.buttonsResponseMessage?.selectedButtonId ||
+    messageData?.buttonsResponseMessage?.selectedDisplayText ||
+    messageData?.buttonsResponseMessageData?.selectedButtonId ||
+    messageData?.buttonsResponseMessageData?.selectedDisplayText ||
+    messageData?.templateButtonReplyMessage?.selectedId ||
+    messageData?.templateButtonReplyMessage?.selectedDisplayText ||
+    messageData?.templateButtonReplyMessageData?.selectedId ||
+    messageData?.templateButtonReplyMessageData?.selectedDisplayText ||
+    ""
+  );
 }
