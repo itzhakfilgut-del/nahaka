@@ -62,21 +62,21 @@ function extractInput(messageData) {
   const text =
     messageData?.textMessageData?.textMessage ||
     messageData?.extendedTextMessageData?.text ||
-    messageData?.buttonsResponseMessage?.selectedButtonId ||
-    messageData?.buttonsResponseMessage?.selectedButtonText ||
+
+    // לחיצה על הכפתורים שלך
     messageData?.templateButtonReplyMessage?.selectedId ||
     messageData?.templateButtonReplyMessage?.selectedDisplayText ||
+
+    // תמיכה גם בסוגי כפתורים אחרים
+    messageData?.buttonsResponseMessage?.selectedButtonId ||
+    messageData?.buttonsResponseMessage?.selectedButtonText ||
     "";
 
   const value = String(text).trim();
 
-  if (value === "להירשם להסעה") return "1";
-  if (value === "לפתוח רישום") return "2";
-  if (value === "פרטים נוספים") return "3";
-
-  if (value === "main_register") return "1";
-  if (value === "main_open") return "2";
-  if (value === "main_details") return "3";
+  if (value === "main_register" || value === "להירשם להסעה") return "1";
+  if (value === "main_open" || value === "לפתוח רישום") return "2";
+  if (value === "main_details" || value === "פרטים נוספים") return "3";
 
   return value;
 }
