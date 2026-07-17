@@ -152,7 +152,14 @@ async function handleCityChoice(phone, value, session, env) {
   }
 
   const phoneForLink = toInternationalDigits(coordinator.phone);
-  const link = phoneForLink ? `https://wa.me/${phoneForLink}` : "";
+
+const messageText = encodeURIComponent(
+  `שלום, אני רוצה להירשם להסעה מהיישוב ${city}.`
+);
+
+const link = phoneForLink
+  ? `https://wa.me/${phoneForLink}?text=${messageText}`
+  : "";
   const message = [
     `האחראי להסעה ביישוב ${city}:`,
     "",
