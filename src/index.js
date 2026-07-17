@@ -63,15 +63,18 @@ function extractInput(messageData) {
     messageData?.textMessageData?.textMessage ||
     messageData?.extendedTextMessageData?.text ||
 
-    // הכפתורים שנשלחים אצלך
+    // המבנה שבפועל GREEN-API שולחת אצלך
+    messageData?.selectedId ||
+    messageData?.selectedButtonId ||
+    messageData?.selectedDisplayText ||
+
+    // מבנים חלופיים
     messageData?.interactiveButtonsResponse?.selectedId ||
     messageData?.interactiveButtonsResponse?.selectedDisplayText ||
-
-    // פורמטים נוספים של GREEN-API
     messageData?.templateButtonReplyMessage?.selectedId ||
     messageData?.templateButtonReplyMessage?.selectedDisplayText ||
     messageData?.buttonsResponseMessage?.selectedButtonId ||
-    messageData?.buttonsResponseMessage?.selectedButtonText ||
+    messageData?.buttonsResponseMessage?.selectedDisplayText ||
     "";
 
   const value = String(text).trim();
