@@ -15,8 +15,11 @@ function getApiBaseUrl(env) {
  * בודק שכל פרטי GREEN-API קיימים.
  */
 function validateConfig(env) {
-  console.log("ENV KEYS:", Object.keys(env));
-  console.log("GREEN_INSTANCE_ID =", env.GREEN_INSTANCE_ID);
+  console.log("ENV:", env);
+  console.log("INSTANCE:", env.GREEN_INSTANCE_ID);
+  console.log("URL:", env.GREEN_API_URL);
+  console.log("TOKEN EXISTS:", !!env.GREEN_API_TOKEN);
+
   if (!env.GREEN_INSTANCE_ID) {
     throw new Error("Missing GREEN_INSTANCE_ID");
   }
