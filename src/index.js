@@ -61,44 +61,34 @@ function extractInput(messageData) {
 
   const type = messageData.typeMessage;
 
-  // הודעת טקסט רגילה
   if (type === "textMessage") {
     return messageData.textMessageData?.textMessage || "";
   }
 
-  // הודעת טקסט מורחבת / הודעה עם קישור
   if (type === "extendedTextMessage") {
-    return (
-      messageData.extendedTextMessageData?.text ||
-      messageData.extendedTextMessageData?.description ||
-      ""
-    );
+    return messageData.extendedTextMessageData?.text || "";
   }
 
-  // בחירה מתוך רשימה
-  if (type === "listMessage") {
-    return (
-      messageData.listMessageData?.singleSelectReply?.selectedRowId ||
-      messageData.listMessageData?.selectedRowId ||
-      messageData.listMessageData?.title ||
-      ""
-    );
-  }
-
-  // לחיצה על כפתור
   if (type === "buttonsResponseMessage") {
     return (
-      messageData.buttonsResponseMessageData?.selectedButtonId ||
-      messageData.buttonsResponseMessageData?.selectedDisplayText ||
+      messageData.buttonsResponseMessage?.selectedButtonId ||
+      messageData.buttonsResponseMessage?.selectedButtonText ||
       ""
     );
   }
 
-  // פורמטים נוספים של כפתורים
-  if (type === "templateButtonReplyMessage") {
+  if (type === "templateButtonsReplyMessage") {
     return (
-      messageData.templateButtonReplyMessageData?.selectedId ||
-      messageData.templateButtonReplyMessageData?.selectedDisplayText ||
+      messageData.templateButtonReplyMessage?.selectedId ||
+      messageData.templateButtonReplyMessage?.selectedDisplayText ||
+      ""
+    );
+  }
+
+  if (type === "listResponseMessage") {
+    return (
+      messageData.listResponseMessage?.singleSelectReply ||
+      messageData.listResponseMessage?.title ||
       ""
     );
   }
