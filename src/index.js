@@ -59,17 +59,24 @@ export default {
 function extractInput(messageData) {
   if (!messageData) return "";
 
-  return (
+  const text =
     messageData?.textMessageData?.textMessage ||
     messageData?.extendedTextMessageData?.text ||
     messageData?.buttonsResponseMessage?.selectedButtonId ||
-    messageData?.buttonsResponseMessage?.selectedDisplayText ||
-    messageData?.buttonsResponseMessageData?.selectedButtonId ||
-    messageData?.buttonsResponseMessageData?.selectedDisplayText ||
+    messageData?.buttonsResponseMessage?.selectedButtonText ||
     messageData?.templateButtonReplyMessage?.selectedId ||
     messageData?.templateButtonReplyMessage?.selectedDisplayText ||
-    messageData?.templateButtonReplyMessageData?.selectedId ||
-    messageData?.templateButtonReplyMessageData?.selectedDisplayText ||
-    ""
-  );
+    "";
+
+  const value = String(text).trim();
+
+  if (value === "להירשם להסעה") return "1";
+  if (value === "לפתוח רישום") return "2";
+  if (value === "פרטים נוספים") return "3";
+
+  if (value === "main_register") return "1";
+  if (value === "main_open") return "2";
+  if (value === "main_details") return "3";
+
+  return value;
 }
