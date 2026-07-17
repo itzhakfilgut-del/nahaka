@@ -22,7 +22,7 @@ export default {
         return new Response("Invalid JSON", { status: 400 });
       }
       
-      console.log("MESSAGE DATA: " + JSON.stringify(body.messageData));
+      console.log(JSON.stringify(body));
       console.log(JSON.stringify(body.messageData, null, 2));
       // מטפלים רק בהודעות נכנסות
       if (body?.typeWebhook !== "incomingMessageReceived") {
